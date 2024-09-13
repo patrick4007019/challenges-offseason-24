@@ -2,6 +2,7 @@ package frc.robot.subsystems.arm;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.util.Units;
 
 public class ArmIOKraken implements ArmIO {
   // For instructions on how to implement this class, refer to the README.md file
@@ -27,13 +28,13 @@ public class ArmIOKraken implements ArmIO {
   @Override
   public double getVelocityRadiansPerSecond() {
     // TODO: Implement this method
-    return m_motor.getVelocity().getValueAsDouble();
+    return Units.rotationsToRadians(m_motor.getVelocity().getValueAsDouble());
   }
 
   @Override
   public Rotation2d getPosition() {
     // TODO: Implement this method
-    return new Rotation2d(m_motor.getPosition().getValueAsDouble());
+    return Rotation2d.fromRotations(m_motor.getPosition().getValueAsDouble());
   }
 
   @Override
